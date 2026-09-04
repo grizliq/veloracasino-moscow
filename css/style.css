@@ -1,0 +1,786 @@
+/* ============================================================
+   Velora Casino — Velora-Тест1
+   Порядок: tokens.css → palette-velora.css → style.css
+   Тема: тёмная / красный акцент + амбер логотип
+   Блоки: Шапка 02-logo-nav · Hero 02-center-official · Слайдер 05-cards ·
+          Преимущества 04-center-grid · Бонусы 03-cards-row ·
+          Подвал 03-bar-split · Модалка 01-bonus-modal
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: var(--lb-font-body);
+  color: var(--vl-text);
+  background: var(--vl-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { max-width: 100%; height: auto; display: block; }
+
+.vl-sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Фон-слой (без background-attachment: fixed) */
+.page-bg {
+  position: fixed; inset: 0; z-index: -1;
+  background:
+    radial-gradient(1000px 600px at 15% -10%, rgba(199, 40, 39, 0.22) 0%, transparent 60%),
+    radial-gradient(800px 500px at 105% 110%, rgba(255, 157, 0, 0.15) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(15, 16, 19, 0.78) 0%, rgba(15, 16, 19, 0.92) 100%),
+    url("../assets/bg/bg.png") center / cover no-repeat;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+.page__main { flex: 1; }
+
+.section { padding: 48px 0; }
+.section--tight { padding: 32px 0; }
+.section--games { padding: 24px 0 40px; }
+
+@media (max-width: 720px) {
+  .section { padding: 32px 0; }
+  .section--games { padding: 16px 0 24px; }
+}
+
+/* ============================================================
+   Шапка — 02-logo-nav (dark)
+   ============================================================ */
+.lb-header-logo {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.lb-header-logo__brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.lb-header-logo__img {
+  height: 42px; width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(255, 157, 0, 0.30));
+}
+
+.lb-header-logo__nav {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 26px;
+}
+.lb-header-logo__link {
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  color: var(--vl-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+.lb-header-logo__link:hover { color: var(--vl-red-soft); }
+
+.lb-header-logo__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--vl-red) 0%, var(--vl-red-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(199, 40, 39, 0.42);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.lb-header-logo__btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+@media (max-width: 760px) {
+  .lb-header-logo { flex-direction: column; gap: 14px; }
+}
+
+/* ============================================================
+   Hero — 02-center-official (адаптирован под Velora)
+   ============================================================ */
+.lb-hero-official {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 48px;
+  text-align: center;
+  position: relative;
+}
+
+.lb-hero-official::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 10px;
+  transform: translateX(-50%);
+  width: min(640px, 92%);
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(255, 157, 0, 0.20) 0%, rgba(199, 40, 39, 0.14) 40%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lb-hero-official__logo {
+  position: relative; z-index: 1;
+  width: min(320px, 68%);
+  height: auto;
+  margin: 0 auto 28px;
+  filter: drop-shadow(0 16px 36px rgba(255, 157, 0, 0.42));
+}
+
+.lb-hero-official__title {
+  position: relative; z-index: 1;
+  margin: 0 0 18px;
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 4.6vw, 50px);
+  font-weight: 700;
+  line-height: 1.12;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lb-hero-official__title-blue {
+  display: block;
+  background: linear-gradient(180deg, var(--vl-amber-hi) 0%, var(--vl-amber) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.lb-hero-official__title-dark { display: block; color: var(--vl-text); }
+
+.lb-hero-official__text {
+  position: relative; z-index: 1;
+  margin: 0 auto 30px;
+  max-width: 640px;
+  font-family: var(--lb-font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--vl-text-soft);
+}
+
+.lb-hero-official__buttons {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+}
+
+.lb-hero-official__btn {
+  display: inline-flex; align-items: center;
+  gap: 12px;
+  height: 54px;
+  padding: 0 26px 0 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--vl-red) 0%, var(--vl-red-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px rgba(199, 40, 39, 0.42);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.lb-hero-official__btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+.lb-hero-official__btn--alt {
+  background: transparent;
+  border: 2px solid rgba(255, 187, 0, 0.55);
+  color: var(--vl-amber-hi);
+  padding: 0 24px;
+  box-shadow: none;
+}
+.lb-hero-official__btn--alt:hover {
+  background: rgba(255, 157, 0, 0.10);
+  border-color: var(--vl-amber);
+  color: var(--vl-amber);
+}
+
+.lb-hero-official__btn-badge {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.lb-hero-official__btn-badge svg { width: 20px; height: 20px; }
+
+/* ============================================================
+   Слайдер — 05-cards (карточки-игры Velora)
+   ============================================================ */
+.lb-slider-cards { width: 100%; overflow: hidden; }
+
+.lb-slider-cards__track {
+  display: flex;
+  width: max-content;
+  animation: vl-cards-scroll 44s linear infinite;
+}
+
+.lb-slider-cards__group {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+.lb-slider-cards__card {
+  width: 220px;
+  background: linear-gradient(160deg, var(--vl-panel) 0%, var(--vl-surface) 60%, #0B0C0F 100%);
+  border: 1px solid rgba(199, 40, 39, 0.20);
+  border-radius: 22px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.lb-slider-cards__card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(199, 40, 39, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 22px rgba(199, 40, 39, 0.28);
+}
+
+.lb-slider-cards__media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+}
+
+.lb-slider-cards__text {
+  margin: 0;
+  color: var(--vl-text);
+  font-family: var(--lb-font-body);
+  font-size: 13.5px;
+  line-height: 1.4;
+  min-height: 3.6em;
+}
+.lb-slider-cards__text strong {
+  display: block;
+  font-family: var(--lb-font-display);
+  font-size: 14px;
+  color: var(--vl-amber-hi);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.lb-slider-cards__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  height: 42px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--vl-red) 0%, var(--vl-red-hot) 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(199, 40, 39, 0.35);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.lb-slider-cards__btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+@keyframes vl-cards-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb-slider-cards__track { animation-duration: 200s; }
+}
+
+/* ============================================================
+   Преимущества — 04-center-grid
+   ============================================================ */
+.lb-adv-center {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  position: relative;
+}
+.lb-adv-center__glow {
+  position: absolute;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+  width: min(680px, 92%);
+  height: 220px;
+  background: radial-gradient(ellipse at center, rgba(199, 40, 39, 0.30) 0%, rgba(199, 40, 39, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lb-adv-center__title {
+  position: relative; z-index: 1;
+  margin: 0 0 40px;
+  text-align: center;
+  font-family: var(--lb-font-display);
+  font-size: clamp(26px, 4.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lb-adv-center__title-outline { display: block; color: var(--vl-text); }
+.lb-adv-center__title-blue {
+  display: block;
+  background: linear-gradient(180deg, var(--vl-amber-hi) 0%, var(--vl-red-soft) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+.lb-adv-center__grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.lb-adv-center__card {
+  background: linear-gradient(160deg, var(--vl-panel) 0%, var(--vl-surface) 55%, #0B0C0F 100%);
+  border: 1px solid rgba(199, 40, 39, 0.14);
+  border-radius: 28px;
+  padding: 26px 22px;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.lb-adv-center__card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 157, 0, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 26px rgba(199, 40, 39, 0.20);
+}
+
+.lb-adv-center__icon {
+  width: 54px; height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(140deg, rgba(199, 40, 39, 0.28) 0%, rgba(255, 157, 0, 0.18) 100%);
+  display: grid; place-items: center;
+  color: var(--vl-amber-hi);
+  box-shadow: inset 0 0 0 1px rgba(255, 157, 0, 0.35), 0 8px 18px rgba(199, 40, 39, 0.22);
+}
+.lb-adv-center__icon svg { width: 28px; height: 28px; }
+
+.lb-adv-center__card-title {
+  margin: 0;
+  font-family: var(--lb-font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  color: var(--vl-amber-hi);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lb-adv-center__card-text {
+  margin: 0;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--vl-text-soft);
+  max-width: 240px;
+}
+
+@media (max-width: 900px) { .lb-adv-center__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .lb-adv-center__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Бонусы — 03-cards-row (4 карты: 1 активная + 3 locked)
+   ============================================================ */
+.lb-bonus-cards {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.vl-bonus__title {
+  margin: 0 0 12px;
+  text-align: center;
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 4.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.vl-bonus__title-dark { color: var(--vl-text); }
+.vl-bonus__title-blue {
+  background: linear-gradient(180deg, var(--vl-amber-hi) 0%, var(--vl-red-soft) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.vl-bonus__lead {
+  margin: 0 auto 32px;
+  max-width: 640px;
+  text-align: center;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--vl-text-soft);
+}
+
+.lb-bonus-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.lb-bonus-cards__card {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 28px;
+  background: linear-gradient(160deg, var(--vl-panel) 0%, var(--vl-surface) 55%, #0B0C0F 100%);
+  border: 1px solid rgba(199, 40, 39, 0.20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.40);
+  transition: transform 0.2s ease;
+}
+.lb-bonus-cards__card:hover { transform: translateY(-3px); }
+
+.lb-bonus-cards__card--active {
+  background:
+    radial-gradient(400px 260px at 50% 10%, rgba(255, 157, 0, 0.28), transparent 70%),
+    linear-gradient(160deg, #2A1010 0%, #1A0808 55%, #0B0303 100%);
+  border-color: rgba(255, 187, 0, 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 34px rgba(199, 40, 39, 0.32);
+}
+
+.lb-bonus-cards__icon {
+  width: 90px; height: 90px;
+  object-fit: contain;
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.45));
+}
+.lb-bonus-cards__card--active .lb-bonus-cards__icon {
+  filter: drop-shadow(0 12px 24px rgba(255, 187, 0, 0.45));
+}
+
+.lb-bonus-cards__value {
+  margin: 0 0 6px;
+  font-family: var(--lb-font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--vl-amber-hi);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lb-bonus-cards__label {
+  margin: 0;
+  font-family: var(--lb-font-body);
+  font-size: 14px;
+  color: var(--vl-text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lb-bonus-cards__locked-title {
+  margin: 0;
+  font-family: var(--lb-font-display);
+  font-size: 18px;
+  color: var(--vl-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.lb-bonus-cards__card--locked .lb-bonus-cards__icon {
+  opacity: 0.55;
+  filter: grayscale(0.6) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.45));
+}
+.lb-bonus-cards__blur {
+  position: absolute; inset: 0;
+  background: rgba(15, 16, 19, 0.12);
+  backdrop-filter: blur(0.5px);
+  pointer-events: none;
+}
+
+.vl-bonus__cta-wrap {
+  display: flex; justify-content: center; margin-top: 28px;
+}
+.vl-bonus__cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 52px;
+  padding: 0 34px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--vl-red) 0%, var(--vl-red-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(199, 40, 39, 0.42);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.vl-bonus__cta:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+@media (max-width: 900px) { .lb-bonus-cards__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .lb-bonus-cards__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   SEO / убедительный текст (свой блок)
+   ============================================================ */
+.vl-seo {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.vl-seo__title {
+  margin: 0 0 24px;
+  text-align: center;
+  font-family: var(--lb-font-display);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.vl-seo__title-dark { color: var(--vl-text); }
+.vl-seo__title-blue {
+  background: linear-gradient(180deg, var(--vl-amber-hi) 0%, var(--vl-red-soft) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.vl-seo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  background: linear-gradient(160deg, var(--vl-panel) 0%, var(--vl-surface) 55%, #0B0C0F 100%);
+  border: 1px solid rgba(199, 40, 39, 0.18);
+  border-radius: 32px;
+  padding: 36px 36px 32px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+}
+.vl-seo__col { display: flex; flex-direction: column; gap: 14px; }
+.vl-seo__h3 {
+  margin: 8px 0 0;
+  font-family: var(--lb-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--vl-amber-hi);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.vl-seo__col p {
+  margin: 0;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--vl-text);
+}
+.vl-seo__col p strong { color: var(--vl-amber-hi); font-weight: 600; }
+.vl-seo__list {
+  margin: 0; padding: 0 0 0 4px;
+  list-style: none;
+  display: grid; gap: 8px;
+}
+.vl-seo__list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--lb-font-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--vl-text-soft);
+}
+.vl-seo__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--vl-amber-hi) 0%, var(--vl-red) 100%);
+  box-shadow: 0 0 10px rgba(199, 40, 39, 0.55);
+}
+.vl-seo__list li strong { color: var(--vl-text); font-weight: 600; }
+
+.vl-seo__list--num { counter-reset: vlstep; }
+.vl-seo__list--num li::before {
+  counter-increment: vlstep;
+  content: counter(vlstep);
+  width: 22px; height: 22px;
+  top: 2px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--vl-red) 0%, var(--vl-red-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 12px;
+  font-weight: 700;
+  display: grid; place-items: center;
+  box-shadow: 0 4px 12px rgba(199, 40, 39, 0.35);
+}
+.vl-seo__list--num li { padding-left: 34px; }
+
+.vl-seo__note {
+  padding: 16px 18px;
+  border-left: 3px solid var(--vl-red);
+  background: rgba(199, 40, 39, 0.10);
+  border-radius: 0 14px 14px 0;
+  color: var(--vl-text-soft) !important;
+  font-style: italic;
+}
+.vl-seo__cta { margin-top: 6px; }
+.vl-seo__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 50px;
+  padding: 0 34px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--vl-red) 0%, var(--vl-red-hot) 100%);
+  color: #ffffff;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(199, 40, 39, 0.42);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.vl-seo__btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+@media (max-width: 860px) { .vl-seo__grid { grid-template-columns: 1fr; padding: 26px 22px; } }
+
+/* ============================================================
+   Подвал — 03-bar-split
+   ============================================================ */
+.lb-footer-bar {
+  width: 100%;
+  padding: 32px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.lb-footer-bar__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.lb-footer-bar__logo {
+  height: 32px; width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(255, 157, 0, 0.28));
+}
+.lb-footer-bar__texts { text-align: right; }
+.lb-footer-bar__disclaimer,
+.lb-footer-bar__copy {
+  margin: 0 0 4px;
+  font-family: var(--lb-font-body);
+  font-size: 13px;
+  color: var(--vl-text-soft);
+}
+.lb-footer-bar__copy { font-size: 12px; opacity: 0.75; }
+
+@media (max-width: 620px) {
+  .lb-footer-bar__inner { justify-content: center; text-align: center; }
+  .lb-footer-bar__texts { text-align: center; }
+}
+
+/* ============================================================
+   Модалка — 01-bonus-modal (Velora red/amber)
+   ============================================================ */
+.lb-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.lb-modal.is-open { display: flex; }
+.lb-modal__overlay {
+  position: absolute; inset: 0;
+  background: rgba(6, 6, 8, 0.72);
+}
+.lb-modal__card {
+  position: relative; z-index: 1;
+  width: min(420px, 100%);
+  border-radius: 28px;
+  padding: 34px 28px 28px;
+  background: linear-gradient(160deg, #C72827 0%, #A01F1E 55%, #6B1211 100%);
+  color: #ffffff;
+  text-align: center;
+  box-shadow:
+    0 22px 54px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(199, 40, 39, 0.42);
+  border: 1px solid rgba(255, 187, 0, 0.35);
+}
+.lb-modal__close {
+  position: absolute; top: 12px; right: 14px;
+  width: 36px; height: 36px;
+  border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, 0.30);
+  color: #ffffff;
+  font-size: 22px; line-height: 1;
+  cursor: pointer;
+}
+.lb-modal__eyebrow {
+  margin: 0 0 10px;
+  font-family: var(--lb-font-body);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+.lb-modal__title {
+  margin: 0 0 12px;
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  background: linear-gradient(180deg, #FFF4C4 0%, var(--vl-amber-hi) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.lb-modal__text {
+  margin: 0 0 22px;
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.lb-modal__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 46px;
+  padding: 0 30px;
+  border-radius: 999px;
+  background: #0F1013;
+  color: var(--vl-amber-hi);
+  font-family: var(--lb-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255, 187, 0, 0.5);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.lb-modal__btn:hover { transform: translateY(-1px); filter: brightness(1.20); }

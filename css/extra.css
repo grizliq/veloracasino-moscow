@@ -1,0 +1,88 @@
+/* ============================================================
+   Velora — надстройка над шаблоном: новые блоки и компоновка.
+   Подключать последним, после style.css
+   ============================================================ */
+
+/* ---- Полоса цифр под первым экраном ---- */
+.vl-stats{
+  max-width: 1120px; margin: 0 auto; padding: 4px 24px 46px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; list-style: none;
+}
+.vl-stats li{
+  padding: 22px 18px; text-align: center; border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.014));
+  border: 1px solid rgba(199, 40, 39, .22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 12px 30px rgba(0,0,0,.3);
+  transition: transform .18s ease, border-color .18s ease;
+}
+.vl-stats li:hover{ transform: translateY(-3px); border-color: rgba(255,157,0,.45); }
+.vl-stats b{
+  display: block; font-family: var(--lb-font-display, inherit);
+  font-size: clamp(20px, 2.4vw, 28px); line-height: 1;
+  color: var(--vl-amber); margin-bottom: 7px;
+}
+.vl-stats span{ font-size: 13px; line-height: 1.45; color: var(--vl-text-muted); }
+@media (max-width: 860px){ .vl-stats{ grid-template-columns: repeat(2, 1fr); } }
+
+/* ---- Две колонки преимуществ ---- */
+.vl-two{ max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+.vl-two__title{
+  text-align: center; font-family: var(--lb-font-display, inherit);
+  font-size: clamp(22px, 3vw, 34px); text-transform: uppercase;
+  color: var(--vl-text); margin: 0 0 8px;
+}
+.vl-two__title span{ color: var(--vl-amber); }
+.vl-two__sub{ text-align: center; color: var(--vl-text-muted); font-size: 15px; margin: 0 0 28px; }
+.vl-two__grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.vl-two__col{
+  padding: 26px 28px; border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.014));
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.28);
+}
+.vl-two__col h3{
+  display: flex; align-items: center; gap: 10px; margin: 0 0 16px;
+  font-family: var(--lb-font-display, inherit); font-size: 19px; color: var(--vl-text);
+}
+.vl-two__col h3::before{
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--vl-amber); box-shadow: 0 0 10px rgba(255,157,0,.6);
+}
+.vl-two__col ul{ margin: 0; padding: 0; list-style: none; display: grid; gap: 13px; }
+.vl-two__col li{
+  position: relative; padding-left: 27px;
+  font-size: 14.5px; line-height: 1.6; color: var(--vl-text-soft);
+}
+.vl-two__col li::before{
+  content: "✓"; position: absolute; left: 0; top: -1px;
+  color: var(--vl-amber); font-weight: 700;
+}
+@media (max-width: 760px){ .vl-two__grid{ grid-template-columns: 1fr; } }
+
+/* ---- FAQ (в шаблоне его не было) ---- */
+.vl-faq{ max-width: 860px; margin: 34px auto 0; }
+.vl-q{
+  border-radius: 13px; margin-bottom: 10px; overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  border: 1px solid rgba(255,255,255,.07);
+}
+.vl-q[open]{ border-color: rgba(255,157,0,.4); box-shadow: 0 12px 30px rgba(0,0,0,.3); }
+.vl-q > summary{
+  list-style: none; cursor: pointer; position: relative;
+  padding: 17px 48px 17px 20px;
+  font-family: var(--lb-font-display, inherit); font-size: 16px; color: var(--vl-text);
+}
+.vl-q > summary::-webkit-details-marker{ display: none; }
+.vl-q > summary::after{
+  content: ""; position: absolute; right: 20px; top: 50%;
+  width: 8px; height: 8px;
+  border-right: 2px solid var(--vl-text-muted); border-bottom: 2px solid var(--vl-text-muted);
+  transform: translateY(-70%) rotate(45deg); transition: transform .2s, border-color .2s;
+}
+.vl-q[open] > summary::after{ transform: translateY(-30%) rotate(-135deg); border-color: var(--vl-amber); }
+.vl-q p{ padding: 0 20px 17px; margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--vl-text-soft); }
+
+/* крупные экраны */
+@media (min-width: 1500px){ body{ zoom: 1.15; } }
+@media (min-width: 1700px){ body{ zoom: 1.28; } }
+@media (min-width: 1900px){ body{ zoom: 1.42; } }

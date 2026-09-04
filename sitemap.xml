@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://veloracasino.moscow/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://veloracasino.moscow/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://veloracasino.moscow/" />
+    <image:image>
+      <image:loc>https://veloracasino.moscow/assets/logo/wordmark.svg</image:loc>
+      <image:title>Velora Casino — Велора Казино</image:title>
+      <image:caption>Официальный сайт Velora Casino</image:caption>
+    </image:image>
+  </url>
+</urlset>

@@ -1,0 +1,33 @@
+/* Velora Casino — тёмная тема (семантика).
+   Подключать после tokens.css */
+
+:root {
+  /* Роли темы */
+  --vl-bg:            #0F1013;   /* фон страницы */
+  --vl-surface:       #16181C;   /* карточки, панели */
+  --vl-surface-2:     #1E2026;   /* второй уровень (шапка) */
+  --vl-panel:         #23262E;
+  --vl-text:          #FFFFFF;
+  --vl-text-soft:     #D0D3DA;
+  --vl-text-muted:    #8B92A0;
+
+  /* Бренд-акценты Velora */
+  --vl-red:           #C72827;
+  --vl-red-hot:       #A01F1E;
+  --vl-red-soft:      #E24140;
+  --vl-amber:         #FF9D00;   /* цвет логотипа */
+  --vl-amber-hi:      #FFBB00;
+
+  /* Совместимость со старыми lb-c-* переменными шапки/hero */
+  --lb-c-2589FF:      #C72827;   /* accent → красный Velora */
+  --lb-c-25475C:      #D0D3DA;
+  --lb-c-111117:      #FFFFFF;
+  --lb-c-FFFFFF:      #FFFFFF;
+  --lb-c-5A7EA8:      #8B92A0;
+  --lb-c-2A7AD9:      #A01F1E;
+  --lb-c-262D36:      #23262E;
+  --lb-c-06060C:      #0F1013;
+  --lb-c-09091C:      #16181C;
+
+  color-scheme: dark;
+}
